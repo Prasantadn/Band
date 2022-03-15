@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Band webpage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        font-family: 'Lato', sans-serif;
+        font-family: 'Roboto', sans-serif;
+      }
+      /* css for navigation bar */
+      ul {
+        list-style-type:	none;
+        margin:				0;
+        padding:			0;
+        background-color: 	black;
+    }
+    
+    li {
+        display: 	inline-block;
+    }
+    
+    li a, .dropbtn {
+        display:			inline-block;
+        color:				white;
+        text-align:			center;
+        padding:			14px 16px;
+        text-decoration:	none;
+        width:				80px;
+        font-size: initial;
+    }
+    
+    li a:hover, .dropdown:hover .dropbtn {
+        background-color:	rgb(228, 224, 224);
+        color: black;
+    }
+    
+    .dropdown {
+        display:	inline-block;
+        position:	relative;
+    }
+    
+    .dropdown-content {
+        display: 			none;
+        position: 			absolute;
+        background-color: 	rgb(255, 255, 255);
+        width: 				160px;
+        box-shadow: 		5px 10px 10px rgba(0,0,0,0.3);
+        z-index: 			1;
+    }
+    
+    .dropdown-content a {
+        color: 				black;
+        padding: 			12px 16px;
+        text-decoration: 	none;
+        display: 			block;
+        text-align: 		left;
+        width:				128px;
+        z-index: 			1;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgb(189, 189, 189);
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display:	block;
+    }
+    ul .search{
+          float:right;
+          display: block;
+          padding: 9.5px 16px;
+          align-items: center;
+          width: 2%;
+      }
+      ul .search:hover{
+        background-color: red;
+      }
+    /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%
+    }
+      /* css for slide */
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: none;
+        z-index: -1;
+      }
+
+      /* Caption text */
+      .text {
+        color: white;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        left: 18%;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+      
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @-webkit-keyframes fade {
+        from {
+          opacity: 0.8;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.8;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {
+          font-size: 11px;
+        }
+      }
+
+      /* Band section */
+      .band h2,
+      .quote {
+        text-align: center;
+      }
+      .band .quote {
+        opacity: 0.5;
+      }
+      .band .description {
+        padding: 3px 200px;
+        text-align: justify;
+      }
+      .name {
+        padding: 2vh 10vw;
+        display: grid;
+        grid-template-columns: auto auto auto;
+      }
+      .name .n {
+        text-align: center;
+      }
+      .name .bandmember {
+        display: block;
+        margin: auto;
+        width: 36%;
+        border-radius: 6px;
+      }
+
+      /* Tour section */
+      .tour-section {
+        background-color: black;
+        padding: 8px 15vw;
+      }
+      .tour-section .date,
+      .rem {
+        text-align: center;
+        color: white;
+      }
+      .tour-section ul {
+        list-style-type: none;
+        padding: 39px;
+        margin: 0;
+      }
+      .tour-section ul li {
+        display: block;
+        padding: 8px 16px !important;
+        border-bottom: 1px solid rgb(209, 209, 209);
+        background-color: white;
+        color: rgb(139, 139, 139);
+      }
+      .tour-section ul li .sold {
+        background-color: red;
+        color: white;
+        padding: 6px 12px;
+      }
+      .tour-section ul li .count {
+        float: right;
+        background-color: black;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 50%;
+      }
+      /* Ticket Section */
+      .tour-section .ticket {
+        margin: 10px 30px !important;
+        display: flex;
+        text-align: justify;
+        align-content: space-between;
+      }
+      .tour-section .ticket .t1 {
+        padding: 10px 10px;
+      }
+      .tour-section .ticket .t1 .para {
+        padding: 20px;
+        padding-top: 0;
+        background-color: white;
+      }
+      .tour-section .ticket .t1 .para .btn {
+        padding: 8px 11px;
+        background-color: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .tour-section .ticket .t1 .t-img:hover {
+        opacity: 0.6;
+      }
+      .tour-section .ticket .t1 .btn:hover {
+        background-color: rgb(219, 217, 217);
+        color: black;
+      }
+      /* Contact section */
+      .contact {
+        text-align: center;
+        padding: 4vh 5vw;
+      }
+      .contact .details {
+        display: flex;
+        justify-content: space-around;
+      }
+      .contact .details .contact-details {
+        text-align: justify;
+      }
+      .contact .details .form {
+        text-align: justify;
+        padding: 5px;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+      }
+      .contact .details .form .send-btn {
+        padding: 8px 11px;
+        background-color: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+        float: right;
+      }
+      .contact .details .form .send-btn:hover {
+        background-color: rgb(219, 217, 217);
+        color: black;
+      }
+      /* The foot section */
+      footer {
+        text-align: center;
+        padding: 8vh 0;
+        color: rgb(128, 128, 128) !important;
+        background-color: rgb(248, 248, 248) !important;
+      }
+      footer .social:hover {
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navigation bar of the website -->
+    <ul id="navbar">
+      <li><a href="#sc">HOME</a></li>
+      <li><a href="#bnd">BAND</a></li>
+          <li><a href="#tour">TOUR</a></li>
+          <li><a href="#cntct">CONTACT</a></li>
+      <li class="dropdown">
+        <a class="dropbtn" href="javascript:void(0)">MORE</a>
+        <div class="dropdown-content">
+          <a href="#">Marchandise</a>
+          <a href="#">Media</a>
+          <a href="#">Extras</a>
+        </div>
+      </li>
+      <img class="search" src="search.png" alt="">
+    </ul>
+
+    <!--SLide images-->
+    <div class="slideshow-container" id="sc">
+      <div class="mySlides fade">
+        <img src="la.jpg" style="width: 100vw" />
+        <div class="text">
+          <h3>Los Angeles</h3>
+          <br />
+          <p><b>We had the best time playing at Venice Beach!</b></p>
+        </div>
+      </div>
+
+      <div class="mySlides fade">
+        <img src="ny.jpg" style="width: 100vw" />
+        <div class="text">
+          <h3>New York</h3>
+          <br />
+          <p><b>The atmosphere in New York is lorem ipsum.</b></p>
+        </div>
+      </div>
+
+      <div class="mySlides fade">
+        <img src="chicago.jpg" style="width: 100vw" />
+        <div class="text">
+          <h3>Chicago</h3>
+          <br />
+          <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!--The band section-->
+    <div class="band" id="bnd">
+      <br>
+      <h2>THE BAND</h2>
+      <br />
+      <p class="quote">We love music</p>
+      <br />
+      <p class="description">
+        We have created a fictional band website. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
+
+    <div class="name">
+      <div>
+        <p class="n">Name</p>
+        <br />
+        <img class="bandmember" src="bandmember.jpg" alt="" />
+      </div>
+      <div>
+        <p class="n">Name</p>
+        <br />
+        <img class="bandmember" src="bandmember.jpg" alt="" />
+      </div>
+      <div>
+        <p class="n">Name</p>
+        <br />
+        <img class="bandmember" src="bandmember.jpg" alt="" />
+      </div>
+    </div>
+
+    <!--Tour section-->
+    <div class="tour-section" id="tour">
+      <br>
+      <br>
+      <h2 class="date">TOUR DATES</h2>
+      <br />
+      <p style="color: rgb(177, 177, 177); text-align: center">
+        Remember to book your tickets!
+      </p>
+      <ul>
+        <li class="month">September <span class="sold">Sold out</span></li>
+        <li class="month">October <span class="sold">Sold out</span></li>
+        <li class="month">November <span class="count">3</span></li>
+      </ul>
+      <div class="ticket">
+        <div class="t1">
+          <img style="width: 100%" src="newyork.jpg" alt="" class="t-img" />
+          <br />
+          <div class="para">
+            <h3>New York</h3>
+            <br />
+            <p style="opacity: 0.6">Fri 27 Nov 2016</p>
+            <br />
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+            <br />
+            <button class="btn">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="t1">
+          <img style="width: 100%" src="paris.jpg" alt="" class="t-img" />
+          <br />
+          <div class="para">
+            <h3>Paris</h3>
+            <br />
+            <p style="opacity: 0.6">Sat 28 Nov 2016</p>
+            <br />
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+            <br />
+            <button class="btn">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="t1">
+          <img style="width: 100%" src="sanfran.jpg" alt="" class="t-img" />
+          <br />
+          <div class="para">
+            <h3>San Francisco</h3>
+            <br />
+            <p style="opacity: 0.6">Sun 29 Nov 2016</p>
+            <br />
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+            <br />
+            <button class="btn">Buy Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Section -->
+    <div class="contact" id="cntct">
+      <br>
+      <h2>CONTACT</h2>
+      <br />
+      <p>Fan? Drop a note!</p>
+      <br />
+      <br />
+      <br />
+      <div class="details">
+        <div class="contact-details">
+          <p><b>Chicago, US</b></p>
+          <br />
+          <p><b>Phone: +00 151515</b></p>
+          <br />
+          <p><b>Email: mail@mail.com</b></p>
+        </div>
+        <div class="form">
+          <input
+            style="height: 34px; padding: 0 6px"
+            type="text"
+            name=""
+            id=""
+            placeholder="Name"
+          />
+          <input
+            style="height: 34px; padding: 0 6px"
+            type="email"
+            placeholder="Email"
+          />
+          <br />
+          <input
+            style="grid-column: 1/3; height: 34px; padding: 0 6px"
+            type="text"
+            placeholder="Message"
+          />
+          <br />
+          <button class="send-btn">Send</button>
+        </div>
+      </div>
+    </div>
+    <!-- Map Section -->
+    <img
+      src="map.jpg"
+      alt=""
+      width="100%"
+      style="padding-top: 6vh; padding-bottom: 0; margin: 0"
+    />
+
+    <!-- Foot Section -->
+    <footer>
+      <i class="social"><img style="width: 3.1%" src="fb.png" alt="" /></i>
+      <i class="social"><img style="width: 2.8%" src="insta.png" alt="" /></i>
+      <i class="social"><img style="width: 2.3%" src="snap.png" alt="" /></i>
+      <i class="social"><img style="width: 2%" src="pinterest.png" alt="" /></i>
+      <i class="social"><img style="width: 2.4%" src="twtr.png" alt="" /></i>
+      <i class="social"
+        ><img style="width: 2.3%" src="linkedin.png" alt=""
+      /></i>
+      <br />
+      <p style="padding: 10px">
+        Powered by
+        <a
+          style="color: rgb(128, 128, 128); font-size: 20px"
+          href="https://www.shopify.in/"
+          >shopify</a
+        >
+      </p>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>
